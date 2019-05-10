@@ -54,6 +54,7 @@
         </rollingPolicy>
     </appender>
 
+    <logger name="cn.zzzcr.springboots.dao.mapper" level="DEBUG"></logger>
 
     <root level="INFO">
         <appender-ref ref="stdout"/>
