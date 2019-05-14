@@ -17,6 +17,10 @@ public class UserInfoDO {
 
     private Byte userStatus;
 
+    private String phoneNum;
+
+    private String address;
+
     private String remark;
 
     private Date sysCtime;
@@ -79,6 +83,22 @@ public class UserInfoDO {
 
     public void setUserStatus(Byte userStatus) {
         this.userStatus = userStatus;
+    }
+
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getRemark() {

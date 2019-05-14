@@ -9,14 +9,16 @@
     <result column="user_pwd" property="userPwd" jdbcType="VARCHAR" />
     <result column="user_type" property="userType" jdbcType="TINYINT" />
     <result column="user_status" property="userStatus" jdbcType="TINYINT" />
+    <result column="phone_num" property="phoneNum" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
     <result column="sys_ctime" property="sysCtime" jdbcType="TIMESTAMP" />
     <result column="sys_utime" property="sysUtime" jdbcType="TIMESTAMP" />
     <result column="is_delete" property="isDelete" jdbcType="TINYINT" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, user_id, user_account, user_name, user_pwd, user_type, user_status, remark, sys_ctime, 
-    sys_utime, is_delete
+    id, user_id, user_account, user_name, user_pwd, user_type, user_status, phone_num, 
+    address, remark, sys_ctime, sys_utime, is_delete
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -34,12 +36,14 @@
     </selectKey>
     insert into user_info (user_id, user_account, user_name, 
       user_pwd, user_type, user_status, 
-      remark, sys_ctime, sys_utime, 
-      is_delete)
+      phone_num, address, remark, 
+      sys_ctime, sys_utime, is_delete
+      )
     values (#{userId,jdbcType=VARCHAR}, #{userAccount,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
       #{userPwd,jdbcType=VARCHAR}, #{userType,jdbcType=TINYINT}, #{userStatus,jdbcType=TINYINT}, 
-      #{remark,jdbcType=VARCHAR}, #{sysCtime,jdbcType=TIMESTAMP}, #{sysUtime,jdbcType=TIMESTAMP}, 
-      #{isDelete,jdbcType=TINYINT})
+      #{phoneNum,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{sysCtime,jdbcType=TIMESTAMP}, #{sysUtime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT}
+      )
   </insert>
   <insert id="insertSelective" parameterType="cn.zzzcr.springboots.dao.model.UserInfoDO" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
@@ -64,6 +68,12 @@
       </if>
       <if test="userStatus != null" >
         user_status,
+      </if>
+      <if test="phoneNum != null" >
+        phone_num,
+      </if>
+      <if test="address != null" >
+        address,
       </if>
       <if test="remark != null" >
         remark,
@@ -96,6 +106,12 @@
       </if>
       <if test="userStatus != null" >
         #{userStatus,jdbcType=TINYINT},
+      </if>
+      <if test="phoneNum != null" >
+        #{phoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
@@ -132,6 +148,12 @@
       <if test="userStatus != null" >
         user_status = #{userStatus,jdbcType=TINYINT},
       </if>
+      <if test="phoneNum != null" >
+        phone_num = #{phoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
       </if>
@@ -155,6 +177,8 @@
       user_pwd = #{userPwd,jdbcType=VARCHAR},
       user_type = #{userType,jdbcType=TINYINT},
       user_status = #{userStatus,jdbcType=TINYINT},
+      phone_num = #{phoneNum,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR},
       sys_ctime = #{sysCtime,jdbcType=TIMESTAMP},
       sys_utime = #{sysUtime,jdbcType=TIMESTAMP},
